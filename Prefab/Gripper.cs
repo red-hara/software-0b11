@@ -32,7 +32,7 @@ public partial class Gripper : Node3D
         if (!(targetState is null))
         {
             counter += delta;
-            if (counter >= 1)
+            if (counter >= motionDuration)
             {
                 switch (targetState.Value)
                 {
@@ -53,10 +53,10 @@ public partial class Gripper : Node3D
                 switch (targetState.Value)
                 {
                 case TargetState.Open:
-                    current = closePosition + (openPosition - closePosition) * counter;
+                    current = closePosition + (openPosition - closePosition) * counter / motionDuration;
                     break;
                 case TargetState.Closed:
-                    current = openPosition + (closePosition - openPosition) * counter;
+                    current = openPosition + (closePosition - openPosition) * counter / motionDuration;
                     break;
                 }
                 mover.Position = new Vector3(0, current, 0);
