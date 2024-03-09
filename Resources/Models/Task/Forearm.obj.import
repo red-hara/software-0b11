@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bvmnapjduyusp"
+path="res://.godot/imported/Forearm.obj-3d830ab15287bfd6a3be0a681102ca9e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Forearm.obj-3d830ab15287bfd6a3be0a681102ca9e.mesh"]
+
+source_file="res://Resources/Models/Task/Forearm.obj"
+dest_files=["res://.godot/imported/Forearm.obj-3d830ab15287bfd6a3be0a681102ca9e.mesh", "res://.godot/imported/Forearm.obj-3d830ab15287bfd6a3be0a681102ca9e.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

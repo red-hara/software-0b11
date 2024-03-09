@@ -1,0 +1,77 @@
+[gd_scene load_steps=8 format=3 uid="uid://blbsfy1qbokfl"]
+
+[ext_resource type="Script" path="res://Prefab/Gripper.cs" id="1_jp6iu"]
+[ext_resource type="ArrayMesh" uid="uid://dkcl2gsqv47jk" path="res://Resources/Models/Axis.obj" id="2_ir7bu"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wwqos"]
+top_radius = 0.125
+bottom_radius = 0.125
+height = 0.25
+radial_segments = 6
+rings = 1
+
+[sub_resource type="BoxMesh" id="BoxMesh_466l7"]
+size = Vector3(0.5, 0.5, 0.01)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qsjkp"]
+size = Vector3(0.5, 0.01, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mw3ft"]
+size = Vector3(0.5, 0.01, 0.25)
+
+[sub_resource type="PrismMesh" id="PrismMesh_rsqb7"]
+left_to_right = 0.0
+size = Vector3(0.01, 0.04, 0.01)
+
+[node name="Gripper" type="Node3D" node_paths=PackedStringArray("mover")]
+script = ExtResource("1_jp6iu")
+mover = NodePath("Mover")
+closePosition = 0.015
+
+[node name="Cylinder" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.125)
+mesh = SubResource("CylinderMesh_wwqos")
+
+[node name="Top" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.255)
+mesh = SubResource("BoxMesh_466l7")
+
+[node name="StaticWall" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.245, -0.36)
+mesh = SubResource("BoxMesh_qsjkp")
+skeleton = NodePath("../Mover")
+
+[node name="Mover" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.245, 0)
+
+[node name="MovingWall" type="MeshInstance3D" parent="Mover"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.385)
+mesh = SubResource("BoxMesh_mw3ft")
+skeleton = NodePath("../..")
+
+[node name="Teeth" type="Node3D" parent="Mover/MovingWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.125)
+
+[node name="Tooth" type="MeshInstance3D" parent="Mover/MovingWall/Teeth"]
+transform = Transform3D(4.37114e-08, 8.74228e-08, 1, 0, -1, 8.74228e-08, 1, 0, -4.37114e-08, 0.2, -0.015, 0.005)
+mesh = SubResource("PrismMesh_rsqb7")
+
+[node name="Tooth2" type="MeshInstance3D" parent="Mover/MovingWall/Teeth"]
+transform = Transform3D(4.37114e-08, 8.74228e-08, 1, 0, -1, 8.74228e-08, 1, 0, -4.37114e-08, 0.1, -0.015, 0.005)
+mesh = SubResource("PrismMesh_rsqb7")
+
+[node name="Tooth3" type="MeshInstance3D" parent="Mover/MovingWall/Teeth"]
+transform = Transform3D(4.37114e-08, 8.74228e-08, 1, 0, -1, 8.74228e-08, 1, 0, -4.37114e-08, 0, -0.015, 0.005)
+mesh = SubResource("PrismMesh_rsqb7")
+
+[node name="Tooth4" type="MeshInstance3D" parent="Mover/MovingWall/Teeth"]
+transform = Transform3D(4.37114e-08, 8.74228e-08, 1, 0, -1, 8.74228e-08, 1, 0, -4.37114e-08, -0.1, -0.015, 0.005)
+mesh = SubResource("PrismMesh_rsqb7")
+
+[node name="Tooth5" type="MeshInstance3D" parent="Mover/MovingWall/Teeth"]
+transform = Transform3D(4.37114e-08, 8.74228e-08, 1, 0, -1, 8.74228e-08, 1, 0, -4.37114e-08, -0.2, -0.015, 0.005)
+mesh = SubResource("PrismMesh_rsqb7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-5.36422e-08, -0.5, 0, 0.5, -5.36422e-08, 0, 0, 0, 0.5, 0.25, -0.24, -0.51)
+mesh = ExtResource("2_ir7bu")

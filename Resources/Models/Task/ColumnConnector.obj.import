@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bmslyld1hq4bp"
+path="res://.godot/imported/ColumnConnector.obj-56c382fb4034d5eda1c8733dcb8370de.mesh"
+
+[deps]
+
+files=["res://.godot/imported/ColumnConnector.obj-56c382fb4034d5eda1c8733dcb8370de.mesh"]
+
+source_file="res://Resources/Models/Task/ColumnConnector.obj"
+dest_files=["res://.godot/imported/ColumnConnector.obj-56c382fb4034d5eda1c8733dcb8370de.mesh", "res://.godot/imported/ColumnConnector.obj-56c382fb4034d5eda1c8733dcb8370de.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

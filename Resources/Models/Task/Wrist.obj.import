@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://g1qhc7lt2ub3"
+path="res://.godot/imported/Wrist.obj-411c8e22577b5155015bf46b9a437283.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Wrist.obj-411c8e22577b5155015bf46b9a437283.mesh"]
+
+source_file="res://Resources/Models/Task/Wrist.obj"
+dest_files=["res://.godot/imported/Wrist.obj-411c8e22577b5155015bf46b9a437283.mesh", "res://.godot/imported/Wrist.obj-411c8e22577b5155015bf46b9a437283.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

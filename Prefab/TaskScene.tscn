@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://5yst5760sjc4"]
+
+[ext_resource type="PackedScene" uid="uid://becird15l36kr" path="res://Prefab/TaskRobot.tscn" id="1_f2wrc"]
+[ext_resource type="PackedScene" uid="uid://blbsfy1qbokfl" path="res://Prefab/Gripper.tscn" id="2_ceyjv"]
+[ext_resource type="Script" path="res://Prefab/TaskRobotControl.cs" id="2_mxvf1"]
+[ext_resource type="Script" path="res://Prefab/TaskController.cs" id="2_x6336"]
+[ext_resource type="PackedScene" uid="uid://bun0k3037lj8w" path="res://Prefab/BoxSource.tscn" id="5_t2fwd"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_tt3n8"]
+size = Vector2(5, 5)
+
+[node name="TaskScene" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="TaskRobot" parent="." instance=ExtResource("1_f2wrc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Hold" type="Node3D" parent="TaskRobot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.91, 0, 1.833)
+
+[node name="Gripper" parent="TaskRobot/Hold" instance=ExtResource("2_ceyjv")]
+motionDuration = 0.1
+
+[node name="Controller" type="Node" parent="." node_paths=PackedStringArray("robot", "gripper", "boxSource", "boxSource2")]
+script = ExtResource("2_x6336")
+robot = NodePath("../TaskRobot")
+gripper = NodePath("../TaskRobot/Hold/Gripper")
+boxSource = NodePath("../BoxSource")
+boxSource2 = NodePath("../BoxSource2")
+
+[node name="Control" type="Node" parent="." node_paths=PackedStringArray("taskRobot", "hold")]
+script = ExtResource("2_mxvf1")
+taskRobot = NodePath("../TaskRobot")
+hold = NodePath("../TaskRobot/Hold")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, -0.258819, 0.965926, 1, -5.35353e-08, 3.09086e-08, 4.37114e-08, 0.965926, 0.258819, 3.5, 0, 2)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1, 0, 0)
+mesh = SubResource("PlaneMesh_tt3n8")
+
+[node name="BoxSource" parent="." instance=ExtResource("5_t2fwd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1, 0.5)
+spawnDelay = 15.0
+
+[node name="BoxSource2" parent="." instance=ExtResource("5_t2fwd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 0.5)
+spawnDelay = 20.0
